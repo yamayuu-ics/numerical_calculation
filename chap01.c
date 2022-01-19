@@ -2,19 +2,14 @@
 #include <stdio.h>
 #include <math.h>
 
-int test(int a){
-    int ret;
-    printf("a\n");
-
-    //ret = test(1);
-
-    return 0;
-}
-
 #define EPS 0.0001
 
 double func(double x){
     return pow(x,3.0) + x - 1;
+}
+
+double func_d(double x){
+    return 3*pow(x,2.0) + 1.0;
 }
 
 double nibun(double a,double b){
@@ -31,4 +26,19 @@ double nibun(double a,double b){
     }while (fabs(a-b) > EPS);
 
     return c;    
+}
+
+
+double newton(double a){
+    double b;
+
+    while (1){
+        b = a - (func(a) / func_d(a));
+        if(fabs(b-a) < EPS){
+            break;
+        }else{
+            a = b;
+        }
+    }
+    return b;
 }
