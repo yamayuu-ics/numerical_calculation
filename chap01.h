@@ -3,5 +3,6 @@
 
 double nibun(double a,double b);
 double newton(double a);
+double bairstow_main(int n,double a[]);
 
 #endif
